@@ -99,7 +99,9 @@ class GalleryViewController: UICollectionViewController, UICollectionViewDelegat
                 cell.imageName.text = assetResource.originalFilename
                 
                 // вказуємо розмір та розширення фото
-                cell.imageSizeLabel.text = "\(data.count/1024/1024) мб (\(asset.pixelWidth)x\(asset.pixelHeight))"
+                let fileSizeStr = data.count > 1000000 ? "\(data.count/1024/1024) мб" : "\(data.count/1024) кб"
+                
+                cell.imageSizeLabel.text = fileSizeStr + " (\(asset.pixelWidth)x\(asset.pixelHeight))"
 
                 DispatchQueue.global(qos: .background).async {
                     // отримуємо md5 hash
